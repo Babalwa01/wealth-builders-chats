@@ -3,10 +3,20 @@ import { StreamChat } from 'stream-chat';
 import { Chat } from 'stream-chat-react';
 import Cookies from 'universal-cookie';
 
+import { ChannelListContainer, ChannelContainer } from './components';
+import './App.css';
+
+
+const apiKey = 'f7utnape9pmh';
+const client = StreamChat.getInstance(apiKey);
+
 const App = () => {
   return (
-    <div>
-      <h1>Wealth Builders Chats</h1>
+    <div className='app__wrapper'>
+      <Chat client={client} theme='team light'>
+        <ChannelListContainer />
+        <ChannelContainer />
+      </Chat>
     </div>
   )
 }
