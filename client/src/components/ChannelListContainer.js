@@ -11,25 +11,23 @@ const SideBar = () => {
         <div className='channel-list__sidebar'>
             <div className='channel-list__sidebar__icon1'>
                 <div className='icon1__inner'>
-                    <img src={MoneyIcon} alt='Money' width={30} />
+                    <img src={MoneyIcon} alt='Money' width="30" />
                 </div>
             </div>
             <div className='channel-list__sidebar__icon2'>
                 <div className='icon1__inner'>
-                    <img src={LogoutIcon} alt='Logout' width={30} />
+                    <img src={LogoutIcon} alt='Logout' width="30" />
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
-const CompanyHeader = () => {
-    return (
-        <div className='channel-list__header'>
-            <p className='channel-list__header__text'>Wealth Builders' Chats</p>
-        </div>
-    )
-}
+const CompanyHeader = () => (
+    <div className='channel-list__header'>
+        <p className='channel-list__header__text'>Wealth Builders' Chats</p>
+    </div>
+)
 
 const ChannelListContainer = () => {
     return (

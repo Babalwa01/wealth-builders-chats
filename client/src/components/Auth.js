@@ -9,31 +9,30 @@ const cookies = new Cookies();
 const initialState = {
     fullName: '',
     username: '',
-    phoneNumber: '',
-    avatarURL: '',
     password: '',
     confirmPassword: '',
+    phoneNumber: '',
+    avatarURL: '',
 }
 
 const Auth = () => {
 
     const [form, setForm] = useState(initialState)
-
     const [isSignup, setIsSignup] = useState(true);
 
-    const handleChange = (event) => {
-        setForm({ ...form, [event.target.name]: event.target.value })
+    const handleChange = (e) => {
+        setForm({ ...form, [e.target.name]: e.target.value })
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const { fullName, username, password, phoneNumber, avatarURL } = form;
+        const { username, password, phoneNumber, avatarURL } = form;
 
         const URL = 'http://localhost:5000/auth';
 
-        const { data: { token, userId, hashedPassword } } = await axios.post(`${URL}/${isSignup ? 'signup' : 'signin'}`, {
-            username, password, fullName, phoneNumber, avatarURL
+        const { data: { token, userId, hashedPassword, fullName } } = await axios.post(`${URL}/${isSignup ? 'signup' : 'login'}`, {
+            username, password, fullName: form.fullName, phoneNumber, avatarURL,
         });
 
         cookies.set('token', token);
@@ -100,7 +99,7 @@ const Auth = () => {
                                 <input 
                                     name='avatarURL' 
                                     type="text" 
-                                    placeholder='avatarURL'
+                                    placeholder='avatar URL'
                                     onChange={handleChange}
                                     required
                                 />
